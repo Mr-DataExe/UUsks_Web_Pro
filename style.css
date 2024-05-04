@@ -390,7 +390,6 @@ body{
     border-right: 1px solid #ddd;
 }
 .content main .container {
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     grid-gap: 60px;
@@ -398,6 +397,7 @@ body{
 }
 
 .content main .item {
+    width: 100%;
     padding: 24px;
     background: var(--light);
     border-radius: 20px;
