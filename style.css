@@ -461,5 +461,8 @@ body{
     .content main .bottom-data .clubOfTheMonth .task-list{
         min-width: 340px;
     }
+    .content main .item {
+        min-width: 340px;
+    }
 
 }
