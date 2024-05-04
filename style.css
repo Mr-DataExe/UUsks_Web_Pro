@@ -254,7 +254,7 @@ body{
 
 .content main{
     width: 100%;
-    padding: 36px 24px;
+    padding: 36px 26px;
     max-height: calc(100vh - 56px);
 }
 
@@ -390,46 +390,48 @@ body{
     border-right: 1px solid #ddd;
 }
 .content main .container {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    grid-gap: 24px;
-    margin-top: 36px;
-    margin-right: 10%;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-gap: 50px;
+    margin-top: 72px;
 }
 
-.content main .item{
-    margin-top: 36px;
-    margin-bottom: 5%;
-    margin-right: 5%;
+.content main .item {
     padding: 24px;
-    color: #ffff;
+    background: var(--light);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     grid-gap: 24px;
-    width: 400px;
-    height: 250px;
-    padding-top: 5%;
-    text-align: center;
+    position: relative;
+    cursor: pointer;
 }
 
 .content main .item span{
-    background: var(--light);
-    border-radius: 20px;
+    height: 100px;
     color: #ffff;
-    padding-left: 40%;
-    padding-right: 40%;
-    padding-bottom: 40%;
-    text-align: center;
+    display: flex;
+    align-items: flex-end;
 }
 
-.content main .item img{
-    height: 120px;
-    background: var(--light);
-    border-radius: 360px;
-    margin-top: -20%;
+.content main .item img {
+    width: 100px; /* Adjust image width as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute; /* Position the image absolutely */
+    top: -30px; /* Adjust the negative top margin to make the image pop out */
+    border-radius: 50%; /* Optional: for rounded image */
+    background: var(--light); /* Optional: add a white background to the image */
+    padding: 1px; /* Optional: add padding to the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for depth */
 }
 
 .content main .item:last-child{
     margin-right: 0%;
 }
+
 @media screen and (max-width: 768px) {
     .sidebar{
         width: 200px;
