@@ -393,7 +393,7 @@ body{
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    grid-gap: 50px;
+    grid-gap: 60px;
     margin-top: 72px;
 }
 
@@ -418,14 +418,14 @@ body{
 }
 
 .content main .item img {
-    width: 100px; /* Adjust image width as needed */
-    height: auto; /* Maintain aspect ratio */
-    position: absolute; /* Position the image absolutely */
-    top: -30px; /* Adjust the negative top margin to make the image pop out */
-    border-radius: 50%; /* Optional: for rounded image */
-    background: var(--light); /* Optional: add a white background to the image */
-    padding: 1px; /* Optional: add padding to the image */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for depth */
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: -30px;
+    border-radius: 50%;
+    background: var(--light);
+    padding: 1px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content main .item:last-child{
