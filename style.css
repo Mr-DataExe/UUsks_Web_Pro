@@ -288,27 +288,7 @@ body{
     justify-content: space-between;
     grid-gap: 24px;
 }
-
-.content main .insights li:nth-child(1) .bx{
-    background: var(--light-primary);
-    color: var(--primary);
-}
-
-.content main .insights li:nth-child(2) .bx{
-    background: var(--light-warning);
-    color: var(--warning);
-}
-
-.content main .insights li:nth-child(3) .bx{
-    background: var(--light-success);
-    color: var(--success);
-}
-
-.content main .insights li:nth-child(4) .bx{
-    background: var(--light-danger);
-    color: var(--danger);
-}
-
+    
 .content main .insights li .info h3{
     font-size: 24px;
     font-weight: 600;
@@ -319,7 +299,7 @@ body{
     color: var(--dark);
 }
 
-.content main .insights li .info p .event{
+.content main .insights li .info p a{
     color: var(--red);
     cursor: pointer;
 }
@@ -408,6 +388,47 @@ body{
 
 .content main .bottom-data .club-Month tr > td:not(:last-child) {
     border-right: 1px solid #ddd;
+}
+.content main .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+    margin-right: 10%;
+}
+
+.content main .item{
+    margin-top: 36px;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    padding: 24px;
+    color: #ffff;
+    grid-gap: 24px;
+    width: 400px;
+    height: 250px;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.content main .item span{
+    background: var(--light);
+    border-radius: 20px;
+    color: #ffff;
+    padding-left: 40%;
+    padding-right: 40%;
+    padding-bottom: 40%;
+    text-align: center;
+}
+
+.content main .item img{
+    height: 120px;
+    background: var(--light);
+    border-radius: 360px;
+    margin-top: -20%;
+}
+
+.content main .item:last-child{
+    margin-right: 0%;
 }
 @media screen and (max-width: 768px) {
     .sidebar{
