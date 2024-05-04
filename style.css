@@ -397,7 +397,7 @@ body{
 }
 
 .content main .item {
-    width: 340px;
+    width: 100%;
     padding: 24px;
     background: var(--light);
     border-radius: 20px;
@@ -462,7 +462,7 @@ body{
         min-width: 340px;
     }
     .content main .item {
-        min-width: 340px;
+        min-width: 300px;
     }
 
 }
