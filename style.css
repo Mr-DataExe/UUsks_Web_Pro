@@ -397,7 +397,7 @@ body{
 }
 
 .content main .item {
-    width: 100%;
+    width: 100px;
     padding: 24px;
     background: var(--light);
     border-radius: 20px;
@@ -442,6 +442,10 @@ body{
         left: 200px;
     }
 
+    .content main .item {
+        min-width: 300px;
+    }
+
 }
 
 @media screen and (max-width: 576px) {
@@ -462,7 +466,7 @@ body{
         min-width: 340px;
     }
     .content main .item {
-        min-width: 300px;
+        min-width: 100px;
     }
 
 }
