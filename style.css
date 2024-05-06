@@ -389,7 +389,8 @@ body{
 .content main .bottom-data .club-Month tr > td:not(:last-child) {
     border-right: 1px solid #ddd;
 }
-.content main .container {
+
+.content main .container-item {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     grid-gap: 60px;
@@ -432,6 +433,41 @@ body{
     margin-right: 0%;
 }
 
+.content main .card {
+    width: 100%;
+    background: var(--light);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-gap: 5px;
+    color: #f6f6f9;
+    position: relative;
+}
+
+.content main .card span{
+    padding-top: 10px;
+    padding-left: 24px;
+    font-weight: bold;
+}
+
+.content main .card p{
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    font-weight:10;
+}
+
+.content main .card p:not(:last-child){ 
+    padding-bottom: 0px;
+}
+
+
+.content main .card img {
+    width: 100%;
+    border-radius: 20px;
+}
+
 @media screen and (max-width: 768px) {
     .sidebar{
         width: 200px;
@@ -463,5 +499,4 @@ body{
     .content main .item {
         min-width: 300px;
     }
-
 }
