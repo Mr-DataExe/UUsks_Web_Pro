@@ -14,7 +14,7 @@
                 <h3>
                     Welcome Back!
                 </h3>
-                <p>Are you looking for <a class="event" href="#Activities" onclick="unload()">new events ?</a></p>
+                <p>Are you looking for <a class="event" href="#Activities" onclick="loadActivitiesContent()">new events ?</a></p>
             </span>
         </li>
     </ul>
@@ -26,12 +26,29 @@
                 <i class='bx bx-calendar'></i>
                 <h3>Weekly Schedule</h3>
             </div>
-                <div class="container">
-                    <table id="weekDaysTable">
-                    </table>
-                </div>
-                <div class="time" id="buttonContainer"></div>
+            <div class="week-days">
+                <div class="days nom"><span>Mon</span><p>00/00</p><div class="date t1 nom">
+                    <p>15:40</p>
+                </div></div>
+                <div class="days nom"><span>Tue</span><p>00/00</p><div class="date t2 nom">
+                    <p>15:40</p><p>15:40</p>
+                </div></div>
+                <div class="days nom"><span>Wen</span><p>00/00</p><div class="date t3 nom">
+                    <p>15:40</p>
+                </div></div>
+                <div class="days nom"><span>Thu</span><p>00/00</p><div class="date t4 nom">
+                    <p>15:40</p><p>15:40</p><p>15:40</p>
+                </div></div>
+                <div class="days nom"><span>Fri</span><p>00/00</p><div class="date t5 nom">
+                    <p>15:40</p><p>15:40</p>
+                </div></div>
+                <div class="days end"><span>Sat</span><p>00/00</p><div class="date t6">
+                </div></div>
+                <div class="days end"><span>Sun</span><p>00/00</p><div class="date t7">
+                </div></div>
             </div>
+            <div class="time" id="buttonContainer"></div>      
+        </div>
         
         <!-- clubOftdeMontd -->
         <div class="club-Month">

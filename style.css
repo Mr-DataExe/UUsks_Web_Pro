@@ -341,12 +341,59 @@ body{
 }
 
 .content main .bottom-data .weekly-schedule{
+    max-height: 360px;
     flex-grow: 1;
 }
 
 .content main .bottom-data .club-Month{
     flex-grow: 0.4;
 }
+
+.content main .bottom-data .weekly-schedule .week-days{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    padding: 5%;
+    padding-top: 0px;
+}
+.content main .bottom-data .weekly-schedule .week-days .days{
+    color: gray;
+    position: relative;
+}
+
+.content main .bottom-data .weekly-schedule .week-days .days:not(:last-child):after{
+    content: "";
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    right: -120%;
+    height: 140%;
+    width: 1px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+}
+
+.content main .bottom-data .weekly-schedule .week-days .end{
+    color: rgb(173, 101, 101);
+}
+.content main .bottom-data .weekly-schedule .week-days .days .nom{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-gap: 12px;
+    padding-top: 24px;
+}
+.content main .bottom-data .weekly-schedule .week-days .days .nom p{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: rgb(116, 116, 116);
+    color: #f6f6f9;
+    cursor: pointer;
+}
+
 .content main .bottom-data .club-Month .mImg{
     display: flex;
     margin: auto;

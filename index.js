@@ -73,7 +73,5 @@ menuBar.addEventListener('click', () => {
 window.addEventListener('resize', () => {
     if (window.innerWidth < 768) {
         sideBar.classList.add('close');
-    } else {
-        sideBar.classList.remove('close');
     }
 });
