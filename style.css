@@ -392,7 +392,7 @@ body{
 
 .content main .container-item {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: 60px;
     margin-top: 72px;
 }
@@ -498,5 +498,8 @@ body{
     }
     .content main .item {
         min-width: 240px;
+    }
+    .content main .card {
+        min-width: 300px;
     }
 }
