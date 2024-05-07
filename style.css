@@ -352,7 +352,7 @@ body{
 .content main .bottom-data .weekly-schedule .week-days{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    min-width: 600px;
     justify-content: space-between;
     text-align: center;
     padding: 5%;
