@@ -4,6 +4,11 @@ const sideLinks = document.querySelectorAll('.sidebar .side-menu li a:not(.logou
 const dashboardContent = document.getElementById('tab-cont');
 const element1 = document.querySelector('.cs');
 const element2 = document.querySelector('.log-in');
+const passwordInput = document.getElementById('password');
+const checkbox = document.getElementById('myCheckbox');
+const isChecked = localStorage.getItem('isChecked');
+
+localStorage.setItem("isChecked", this.checked);
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -57,7 +62,21 @@ function back() {
     element1.style.display = 'contents';
     element2.style.display = 'none';
 }
-
+function goTo(p) {
+    window.location.href = p;
+}
+function onLoadRed() {
+    if (isChecked.checked) {
+        window.location.href = 'Login.html';
+    }
+}
+function togPass() {
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+    }else{
+        passwordInput.type = 'password';
+    }
+}
 function loadActivitiesContent() {
     fetch('activities.html')
         .then(response => {

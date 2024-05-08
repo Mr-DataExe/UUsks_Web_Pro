@@ -174,8 +174,40 @@ body{
     width: 10px;
     margin-top: -20px;
     margin-left: 220px;
-
-
+    cursor: pointer;
+}
+.log-in .spef .cont .bottom-elements{
+    display: flex;
+    flex-direction: column;
+}
+.log-in .spef .cont .bottom-elements .wrong{
+    font-size: 12px;
+    padding-bottom: 20px;
+    color: rgba(255, 0, 0, 0.65);
+}
+.log-in .spef .cont .bottom-elements .flex-cont{
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+.log-in .spef .cont .bottom-elements .flex-cont input{
+    cursor: pointer;
+}
+.log-in .spef .cont .bottom-elements .flex-cont label{
+    padding-left: 5px;
+    color: #f6f6f6;
+    font-size: 12px;
+    cursor: pointer;
+}
+.log-in .spef .cont .bottom-elements .continue{
+    margin: 36px;
+    width: 160px;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    color: #f6f6f6;
+    border-radius: 4px;
+    background-color: #181a1ee7;
     cursor: pointer;
 }
 .sidebar{

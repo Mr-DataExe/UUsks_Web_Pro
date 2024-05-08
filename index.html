@@ -10,7 +10,7 @@
     <title>ÜÜsks</title>
 </head>
 
-<body onload="loadDashboardContent()">
+<body onload="loadDashboardContent(); onLoadRed();">
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -27,7 +27,7 @@
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="#" class="logout">
+                <a href="#" class="logout" onclick="goTo('Login.html')">
                     <i class='bx bx-log-out-circle'></i>
                     Logout
                 </a>
