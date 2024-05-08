@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --light: #f6f6f9;
+    --light: #181a1e;
+    --grey: #25252c;
+    --dark: #fbfbfb;
     --primary: #1976D2;
     --light-primary: #CFE8FF;
-    --grey: #eee;
     --dark-grey: #AAAAAA;
-    --dark: #363949;
     --red: #FF5858;
     --danger: #D32F2F;
 	--light-danger: #FECDD3;
@@ -39,17 +39,145 @@ html{
     overflow-x: hidden;
 }
 
-body.dark{
-    --light: #181a1e;
-    --grey: #25252c;
-    --dark: #fbfbfb
-}
-
 body{
     background: var(--grey);
     overflow-x: hidden;
 }
+.cs{
+    display: contents;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+}
 
+.login .logo{
+    margin-top: 65px;
+    font-size: 38px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    justify-content: center;
+}
+
+.login .logo .logo-img{
+    padding-right: 15px;
+    box-sizing: content-box;
+}
+
+.login .logo .logo-name span{
+    color: var(--red);
+}
+.login .txt{
+    padding: 20px;
+    display: flex;
+    box-sizing: content-box;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #64748B;
+}
+.bts{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #f6f6f6;
+}
+
+.bts .bt{
+    width: 240px;
+    height: 40px;
+    font-size: 16px;
+    text-align: center;
+    align-content: center;
+    margin: 10px;
+    border-radius: 3px;
+    background-color:var(--light);
+    cursor: pointer;
+}
+
+.log-in{
+    display: none;
+}
+
+.log-in .bx.bxs-chevron-left {
+    color: #f6f6f6;
+    cursor: pointer;
+    font-size: 3vw;
+    background-color: #181a1e;
+    border-radius: 3px;
+    margin: 0.5vw;
+}
+
+.log-in h1{
+    color: #f6f6f6;
+    font-size: 38px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    justify-content: center;
+}
+.log-in .txt{
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    box-sizing: content-box;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #64748B;
+}
+.log-in .spef{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.log-in .spef .cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.log-in .spef .cont .input-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fbfbfb69;
+    font-size: 12px;
+    width: 240px;
+    padding-bottom: 16px;
+}
+.log-in .spef .cont .input-group input{
+    height: 30px;
+    margin-top: 5px;
+    font-size: 10px;
+    background-color: #181a1e;
+    padding: 5px;
+    padding-right: 25px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #25252c;
+    border-style: double;
+    outline: 5px solid #181a1e;
+    color: #f6f6f6;
+}
+.log-in .spef .cont .input-group .toggle-password{
+    display: flex;
+    font-size: 10px;
+    width: 10px;
+    margin-top: -20px;
+    margin-left: 220px;
+
+
+    cursor: pointer;
+}
 .sidebar{
     position: fixed;
     top: 0;
@@ -97,7 +225,6 @@ body{
 
 .sidebar .logo .logo-name span{
     color: var(--red);
-
 }
 
 .sidebar .logo .bx{
@@ -531,9 +658,11 @@ body{
     .content nav form.show~.notif, .content nav form.show~.profile{
         display: none;
     }
+
     .content main .bottom-data .weekly-schedule .week-days .days:not(:last-child):after{
         right: -40%;
     }
+    
     .content main .insights {
         grid-template-columns: 1fr;
     }

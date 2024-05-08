@@ -2,6 +2,8 @@ const menuBar = document.querySelector('.content nav .bx.bx-menu');
 const sideBar = document.querySelector('.sidebar');
 const sideLinks = document.querySelectorAll('.sidebar .side-menu li a:not(.logout)');
 const dashboardContent = document.getElementById('tab-cont');
+const element1 = document.querySelector('.cs');
+const element2 = document.querySelector('.log-in');
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -44,6 +46,16 @@ function loadClubsContent() {
         .catch(error => {
             console.error('There was a problem fetching the dashboard content:', error);
         });
+}
+
+function changeLogin() {
+    element1.style.display = 'none';
+    element2.style.display = 'contents';
+}
+
+function back() {
+    element1.style.display = 'contents';
+    element2.style.display = 'none';
 }
 
 function loadActivitiesContent() {
