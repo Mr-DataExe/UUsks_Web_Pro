@@ -5,10 +5,6 @@ const dashboardContent = document.getElementById('tab-cont');
 const element1 = document.querySelector('.cs');
 const element2 = document.querySelector('.log-in');
 const passwordInput = document.getElementById('password');
-const checkbox = document.getElementById('myCheckbox');
-const isChecked = localStorage.getItem('isChecked');
-
-localStorage.setItem("isChecked", this.checked);
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -20,7 +16,7 @@ sideLinks.forEach(item => {
     })
 });
 
-
+console.log(fetch('https://clubs-system.onrender.com/api/event/'))
 function loadDashboardContent() {
     fetch('dashboard.html')
         .then(response => {
@@ -65,11 +61,7 @@ function back() {
 function goTo(p) {
     window.location.href = p;
 }
-function onLoadRed() {
-    if (isChecked.checked) {
-        window.location.href = 'Login.html';
-    }
-}
+
 function togPass() {
     if (passwordInput.type == 'password') {
         passwordInput.type = 'text';
@@ -77,6 +69,17 @@ function togPass() {
         passwordInput.type = 'password';
     }
 }
+
+function procCard(items) {
+    const containerC = document.getElementById('ctc')
+    const item = document.querySelector(items + ' img')
+    const insideItems = document.getElementById('inItems')
+    const imgElement = inItems.querySelector('img');
+    containerC.style.display = 'none';
+    insideItems.style.display = 'flex';
+    imgElement.src = item.src;
+}
+
 function loadActivitiesContent() {
     fetch('activities.html')
         .then(response => {
@@ -96,6 +99,7 @@ function loadActivitiesContent() {
 function unload() {
     dashboardContent.innerHTML = "<main></main>";
 }
+
 
 menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
