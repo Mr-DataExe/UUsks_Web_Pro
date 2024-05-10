@@ -80,6 +80,16 @@ function procCard(items) {
     imgElement.src = item.src;
 }
 
+function procClub(items) {
+    const containeri = document.getElementById('cti')
+    const item = document.querySelector(items + ' img')
+    const insideClubs = document.getElementById('inClubs')
+    const imgElement = inClubs.querySelector('img');
+    containeri.style.display = 'none';
+    insideClubs.style.display = 'flex';
+    imgElement.src = item.src;
+}
+
 function loadActivitiesContent() {
     fetch('activities.html')
         .then(response => {

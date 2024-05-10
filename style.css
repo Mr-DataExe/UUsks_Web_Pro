@@ -556,7 +556,6 @@ body{
 .content main .bottom-data .club-Month .mImg{
     display: flex;
     margin: auto;
-
 }
 
 .content main .bottom-data .club-Month .vertical-line {
@@ -597,6 +596,9 @@ body{
     border-right: 1px solid #ddd;
 }
 
+.content main .header .left{
+    margin-bottom: 45px;
+}
 .content main .container-item {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -686,9 +688,23 @@ body{
 .content main .inside-container {
     display: none;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    grid-gap: 24px;
-    margin-top: 36px;
+    flex-direction: column;
+
 }
+.content main .inside-container .bx.bxs-chevron-left {
+    color: #f6f6f6;
+    cursor: pointer;
+    font-size: 30px;
+    width: 30px;
+    background-color: #181a1e;
+    border-radius: 3px;
+}
+.content main .inside-container .rowDiv{
+    display: flex;
+    flex-direction: row;
+    grid-gap: 24px;
+}
+
 .content main .mCard {
     display: flex;
     margin-top: 20px;
@@ -734,7 +750,7 @@ body{
     padding-right: 10px;
     font-size: 16px;
 }
-.content main .mCard .outerCont .info1 div {
+.content main .mCard .outerCont .info1 div:not(:last-child) {
     margin-right: 70px;
 }
 .content main .mCard .outerCont .info1 div p{
@@ -769,6 +785,7 @@ body{
 }
 .content main .cAbout .para{
     padding-left: 30px;
+    padding-right: 30px;
     padding-top: 10px;
 }
 @media screen and (max-width: 768px) {
