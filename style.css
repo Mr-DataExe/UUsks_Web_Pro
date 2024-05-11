@@ -181,6 +181,7 @@ body{
     flex-direction: column;
 }
 .log-in .spef .cont .bottom-elements .wrong{
+    display: none;
     font-size: 12px;
     padding-bottom: 20px;
     color: rgba(255, 0, 0, 0.65);
