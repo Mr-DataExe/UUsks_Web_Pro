@@ -9,6 +9,7 @@
     --dark-grey: #AAAAAA;
     --red: #FF5858;
     --danger: #D32F2F;
+    --darkRed: rgba(255, 0, 0, 0.65);
 	--light-danger: #FECDD3;
     --warning: #FBC02D;
     --light-warning: #FFF2C6;
@@ -148,6 +149,7 @@ body{
 .log-in .spef .cont .input-group{
     display: flex;
     flex-direction: column;
+    align-self: center;
     justify-content: center;
     color: #fbfbfb69;
     font-size: 12px;
@@ -183,15 +185,18 @@ body{
 .log-in .spef .cont .bottom-elements .wrong{
     display: none;
     font-size: 12px;
-    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-top: 10px;
     color: rgba(255, 0, 0, 0.65);
 }
 .log-in .spef .cont .bottom-elements .flex-cont{
+    padding-top: 10px;
     display: flex;
     flex-direction: row;
     align-self: flex-start;
 }
 .log-in .spef .cont .bottom-elements .flex-cont input{
+    margin-left: 30px;
     cursor: pointer;
 }
 .log-in .spef .cont .bottom-elements .flex-cont label{
@@ -200,6 +205,7 @@ body{
     font-size: 12px;
     cursor: pointer;
 }
+
 .log-in .spef .cont .bottom-elements .continue{
     margin: 36px;
     width: 160px;
@@ -211,6 +217,192 @@ body{
     background-color: #181a1ee7;
     cursor: pointer;
 }
+
+.log-in .spef .cont .bottom-elements p {
+    color: #64748B;
+}
+.log-in .spef .cont .bottom-elements p a{
+    color: #047857;
+}
+
+.sign-up .bx.bxs-chevron-left {
+    color: #f6f6f6;
+    cursor: pointer;
+    font-size: 3vw;
+    background-color: #181a1e;
+    border-radius: 3px;
+    margin: 0.5vw;
+}
+
+.sign-up h1{
+    color: #f6f6f6;
+    font-size: 38px;
+    font-weight: 700;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    box-sizing: content-box;
+    justify-content: center;
+}
+.sign-up .txt{
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    box-sizing: content-box;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #64748B;
+}
+.sign-up .spef{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.sign-up .spef .cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sign-up .spef .cont .input-group{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    color: #fbfbfb69;
+    font-size: 12px;
+    width: 240px;
+    padding-bottom: 16px;
+}
+.sign-up .spef .cont .input-group input{
+    height: 30px;
+    margin-top: 5px;
+    font-size: 10px;
+    background-color: #181a1e;
+    padding: 5px;
+    padding-right: 25px;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #25252c;
+    border-style: double;
+    outline: 5px solid #181a1e;
+    color: #f6f6f6;
+}
+.sign-up .spef .cont .input-group .toggle-password{
+    display: flex;
+    font-size: 10px;
+    width: 10px;
+    margin-top: -20px;
+    margin-left: 220px;
+    cursor: pointer;
+}
+
+.sign-up .spef .cont .input-group p{
+    display: none;
+    padding-top: 5px;
+    color: rgba(255, 0, 0, 0.65);
+}
+
+.sign-up .spef .cont .input-group .pass{
+    padding-top:15px;
+    color: rgba(255, 0, 0, 0.65);
+}
+
+.sign-up .spef .cont .input-group .username-error{
+    display: none;
+}
+
+.sign-up .spef .cont .input-group .email-error{
+    display: none;
+}
+
+.sign-up .spef .cont .input-group .password-error{
+    display: none;
+}
+
+.sign-up .spef .cont .input-group .re-password-error{
+    display: none;
+}
+
+.sign-up .spef .cont .input-group .birth-error{
+    display: none;
+}
+.sign-up .spef .cont .birth{
+    padding-top: 10px;
+}
+
+.sign-up .spef .cont .username input{
+    border-color: #25252c;
+}
+
+.sign-up .spef .cont .email input{
+    border-color: #25252c;
+}
+
+.sign-up .spef .cont .password input{
+    border-color: #25252c;
+}
+
+.sign-up .spef .cont .re-password input{
+    border-color: #25252c;
+}
+
+.sign-up .spef .cont .birth input{
+    text-align: center;
+    border-color: #25252c;
+    color: #fbfbfb69;
+}
+
+.sign-up .spef .cont .birth input::-webkit-calendar-picker-indicator {
+    filter: invert(025);
+    margin-right: -19px;
+}
+
+.sign-up .spef .cont .bottom-elements{
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up .spef .cont .bottom-elements .wrong{
+    display: none;
+    font-size: 12px;
+    padding-left: 30px;
+    padding-top: 10px;
+    color: rgba(255, 0, 0, 0.65);
+}
+
+.sign-up .spef .cont .bottom-elements .flex-cont{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+.sign-up .spef .cont .bottom-elements .flex-cont input{
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.sign-up .spef .cont .bottom-elements .flex-cont label{
+    padding-left: 5px;
+    color: #f6f6f6;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.sign-up .spef .cont .bottom-elements .continue{
+    margin: 36px;
+    width: 160px;
+    text-align: center;
+    align-self: center;
+    font-size: 20px;
+    color: #f6f6f6;
+    border-radius: 4px;
+    background-color: #181a1ee7;
+    cursor: pointer;
+}
+
 .sidebar{
     position: fixed;
     top: 0;

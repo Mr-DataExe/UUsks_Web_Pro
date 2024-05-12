@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>ÜÜsks Login</title>
+</head>
+
+<body>
+    <div class = "sign-up">
+        <a class="bx bxs-chevron-left" href="Login.html"></a>
+        <h1>REGISTRATION</h1>
+        <span class="txt">Welcome back. Enter your credentials to create your account</span>
+        <div class = 'spef'>
+            <div class = 'cont'>
+                <div class="input-group username">
+                    <label for="username  ">Enter a Username</label>
+                    <input type="username" id="newUserName" name="username" placeholder="Random User">
+                    <p class = 'username-error' id="username-error">Please Enter an Eligible Username</p>
+                </div>
+                <div class="input-group email">
+                    <label for="email  ">Email Address or Student ID</label>
+                    <input type="email" id="newEmail" name="email" placeholder="Random@st.uskudar.edu.tr">
+                    <p class = 'email-error' id="email-error">Must Be an Eligible Uskudar Email</p>
+                    
+                </div>
+                <div class="input-group password">
+                    <label for="password">Password</label>
+                    <input type="password" id="newPassword" name="password" placeholder="Enter your password">
+                    <i class="fa-regular fa-eye toggle-password" onclick="togPass()"> </i>
+                    <p class = 'pass password-error' id="password-error">Must Contain Eight or More Letters and at Least One Numbers</p>
+                </div>
+                <div class="input-group re-password">
+                    <label for="password">Re-Enter Password</label>
+                    <input type="password" id="newRePassword" name="password" placeholder="Re-write Password">
+                    <i class="fa-regular fa-eye toggle-password" onclick="togPass()"> </i>
+                    <p class = 'pass re-password-error' id="re-password-error">Passwords Does Not Match</p>
+                </div>
+                <div class="input-group birth">
+                    <label for="birthdate  ">Enter your Birth Date</label>
+                    <input type="date" id="newDate" name="date">
+                    <p class = 'birth-error' id="birth-error">Must Be Filled</p>
+                </div>
+                <div class = 'bottom-elements'>
+                    <p class = 'wrong'>Passwords Does Not Match</p>
+                    <a class="continue" onclick="regester()">Create</a>
+                </div>
+                
+            </div> 
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
