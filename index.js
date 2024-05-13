@@ -89,6 +89,7 @@ function studentLogin() {
     element2.style.display = 'contents';
     regDisplay.style.display = 'flex'
     tag = 'student';
+    sessionStorage.setItem("tag", tag);
 }
 
 function managerLogin() {
@@ -96,6 +97,7 @@ function managerLogin() {
     element2.style.display = 'contents';
     regDisplay.style.display = 'flex'
     tag = 'manager';
+    sessionStorage.setItem("tag", tag);
 }
 
 function adminLogin() {
@@ -103,6 +105,7 @@ function adminLogin() {
     element2.style.display = 'contents';
     regDisplay.style.display = 'none'
     tag = 'admin';
+    sessionStorage.setItem("tag", tag);
 }
 
 const signUpStudent = async (userData) => {
@@ -149,11 +152,15 @@ const signUpManager = async (userData) => {
 
 function onLoadCheckLog() {
     let localData = localStorage.getItem("myData");
+    let localTag = localStorage.getItem("tag");
     let sessionData = sessionStorage.getItem("myData");
+    let sessionTag = sessionStorage.getItem("tag");
     if(localData !== null) {
         console.log(localData)
+        console.log(localTag)
     }else if(sessionData !== null) {
         console.log(sessionData)
+        console.log(sessionTag)
     }else if (localData == null || sessionData == null) {
         window.location.href = 'Login.html';
     }
@@ -173,6 +180,7 @@ const loginStudent = async (loginData) => {
 
             if (document.getElementById("myCheckbox").checked) {
                 localStorage.setItem("myData", data.user._id);
+                localStorage.setItem("tag", sessionStorage.setItem("tag", tag));
                 console.log("Data saved to localStorage");
             } else {
                 sessionStorage.setItem("myData", data.user._id);
@@ -198,15 +206,25 @@ const loginManager = async (loginData) => {
         });
         if (response.ok) {
             const data = await response.json();
-
-            if (document.getElementById("myCheckbox").checked) {
-                localStorage.setItem("myData", data.user._id);
-                console.log("Data saved to localStorage");
-            } else {
-                sessionStorage.setItem("myData", data.user._id);
-                console.log("Data saved to sessionStorage");
+            if (tag.includes('student')) {
+                if (document.getElementById("myCheckbox").checked) {
+                    localStorage.setItem("myData", data.user._id);
+                    console.log("Data saved to localStorage");
+                } else {
+                    sessionStorage.setItem("myData", data.user._id);
+                    console.log("Data saved to sessionStorage");
+                }
+                goTo();
+            }else if (tag.includes('manager')) {
+                if (document.getElementById("myCheckbox").checked) {
+                    localStorage.setItem("myData", data.admin._id);
+                    console.log("Data saved to localStorage");
+                } else {
+                    sessionStorage.setItem("myData", data.admin._id);
+                    console.log("Data saved to sessionStorage");
+                }
+                goTo();
             }
-            goTo();
         }else{
             redText.style.display = 'flex';
         }
@@ -222,6 +240,8 @@ function regester(){
     const userNewPassword = document.getElementById('newPassword').value;
     const userNewRePassword = document.getElementById('newRePassword').value;
     const userNewDate = document.getElementById('newDate').value;
+
+    let tag = sessionStorage.getItem("tag");
 
     let userCheck = true;
     let emailCheck = true;
@@ -272,35 +292,56 @@ function regester(){
     if (userCheck == false || emailCheck == false || passwordCheck == false || rePasswordCheck == false || dateCheck == false) {
         return;
     }
-    return;
-    const signUpData = {
-        user_img: userNewImg,
-        user_name: userNewName,
-        user_email: userNewEmail,
-        user_password: userNewPassword,
-        user_birth: userNewDate,
-    };
-    console.log(signUpData);
     if (tag.includes('student')) {
-        signUpUser(signUpData)
+        const signUpData = {
+            user_img: userNewImg,
+            user_name: userNewName,
+            user_email: userNewEmail,
+            user_password: userNewPassword,
+            user_birth: userNewDate,
+        }
+        console.log(signUpData);
+        if (tag.includes('student')) {
+            signUpUser(signUpData)
+        }else if (tag.includes('manager')) {
+            signUpManager(signUpData)
+        }else{
+            window.location.href = 'Login.html';
+        }
     }else if (tag.includes('manager')) {
-        signUpManager(signUpData)
-    }else{
-        window.location.href = 'Login.html';
+        const signUpData = {
+            admin_img: userNewImg,
+            admin_name: userNewName,
+            admin_email: userNewEmail,
+            admin_password: userNewPassword,
+            admin_birth: userNewDate,
+        }
+        console.log(signUpData);
+        if (tag.includes('student')) {
+            signUpUser(signUpData)
+        }else if (tag.includes('manager')) {
+            signUpManager(signUpData)
+        }else{
+            window.location.href = 'Login.html';
+        }
     }
+
 }
 
 function login(){
     const userEmail = document.getElementById('email').value;
     const userPassword = document.getElementById('password').value;
-    const loginData = {
-        user_email: userEmail,
-        user_password: userPassword,
-    };
-    console.log(loginData);
     if (tag.includes('student')) {
+        const loginData = {
+            user_email: userEmail,
+            user_password: userPassword,
+        };
         loginStudent(loginData);
     }else if (tag.includes('manager')) {
+        const loginData = {
+            admin_email: userEmail,
+            admin_password: userPassword,
+        };
         loginManager(loginData);
     }else if (tag.includes('admin')) {
         loginAdmin(loginData)
