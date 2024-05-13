@@ -20,9 +20,9 @@
             <span class="txt">Welcome back, Login as:</span>
         </div>
         <div class = 'bts'>
-            <a class="bt student" onclick="changeLogin()">Student</a>
-            <a class="bt club manager" onclick="changeLogin()">Club manager</a>
-            <a class="bt admin" onclick="changeLogin()">Admin</a>
+            <a class="bt student" onclick="studentLogin()">Student</a>
+            <a class="bt club manager" onclick="managerLogin()">Club manager</a>
+            <a class="bt admin" onclick="adminLogin()">Admin</a>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                         <label for="myCheckbox">Stay Signed In</label>
                     </div>
                     <a class="continue" onclick="login()">Continue</a>
-                    <p>Don't have an Account ?. <a href="Sign-up.html">Sign-up Here</a></p>
+                    <p id="reg">Don't have an Account ?. <a href="Sign-up.html">Sign-up Here</a></p>
                 </div>
                 
             </div> 

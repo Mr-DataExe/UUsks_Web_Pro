@@ -221,6 +221,9 @@ body{
 .log-in .spef .cont .bottom-elements p {
     color: #64748B;
 }
+.log-in .spef .cont .bottom-elements #reg {
+    display: flex;
+}
 .log-in .spef .cont .bottom-elements p a{
     color: #047857;
 }
@@ -463,7 +466,9 @@ body{
     width: 100%;
     margin-top: 48px;
 }
-
+.sidebar .side-menu #support{
+    display: flex;
+}
 .sidebar .side-menu li{
     height: 48px;
     background: transparent;

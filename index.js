@@ -17,6 +17,7 @@ const redTextPassword = document.getElementById('password-error');
 const redTextRePassword = document.getElementById('re-password-error');
 const redTextDate = document.getElementById('birth-error');
 const redText = document.querySelector('.log-in .spef .cont .bottom-elements .wrong')
+const regDisplay = document.getElementById('reg');
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -30,7 +31,6 @@ sideLinks.forEach(item => {
 
 function goToSideLink() {
     sideLinks.forEach(i => {
-        
         i.parentElement.classList.remove('active');
     })
     activitiesID.classList.add('active')
@@ -73,21 +73,39 @@ const getUsers = async () => {
     const response = await fetch('https://clubs-system.onrender.com/api/user/');
     const data = await response.json();
 
-    // Assuming data is an array of user objects
+
     data.forEach((user) => {
-        console.log(user); // Log each user object
-        // Optionally, display each user's data in your frontend
-        // For example, create a <div> for each user and append it to a container
+        console.log(user);
         const userDiv = document.createElement('div');
         userDiv.textContent = `User ID: ${user._id}, Name: ${user.user_name}, Email: ${user.user_email}`;
     });
-  } catch (error) {
+} catch (error) {
     console.error('Error:', error);
-  }
+}
 };
 
-// Function to handle user signup
-const signUpUser = async (userData) => {
+function studentLogin() {
+    element1.style.display = 'none';
+    element2.style.display = 'contents';
+    regDisplay.style.display = 'flex'
+    tag = 'student';
+}
+
+function managerLogin() {
+    element1.style.display = 'none';
+    element2.style.display = 'contents';
+    regDisplay.style.display = 'flex'
+    tag = 'manager';
+}
+
+function adminLogin() {
+    element1.style.display = 'none';
+    element2.style.display = 'contents';
+    regDisplay.style.display = 'none'
+    tag = 'admin';
+}
+
+const signUpStudent = async (userData) => {
     try {
         const response = await fetch('https://clubs-system.onrender.com/api/user/signup', {
         method: 'POST',
@@ -97,9 +115,30 @@ const signUpUser = async (userData) => {
         body: JSON.stringify(userData),
         });
         if (response.ok) {
-            goTo();
             const data = await response.json();
             console.log(data);
+            goTo();
+        }else{
+                redText.style.display = 'flex';
+        }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+};
+
+const signUpManager = async (userData) => {
+    try {
+        const response = await fetch('https://clubs-system.onrender.com/api/admin/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            goTo();
         }else{
                 redText.style.display = 'flex';
         }
@@ -120,8 +159,7 @@ function onLoadCheckLog() {
     }
 }
 
-// Function to handle user login
-const loginUser = async (loginData) => {
+const loginStudent = async (loginData) => {
     try {
         const response = await fetch('https://clubs-system.onrender.com/api/user/login', {
             method: 'POST',
@@ -149,7 +187,34 @@ const loginUser = async (loginData) => {
     }
 };
 
-// Example usage
+const loginManager = async (loginData) => {
+    try {
+        const response = await fetch('https://clubs-system.onrender.com/api/admin/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(loginData),
+        });
+        if (response.ok) {
+            const data = await response.json();
+
+            if (document.getElementById("myCheckbox").checked) {
+                localStorage.setItem("myData", data.user._id);
+                console.log("Data saved to localStorage");
+            } else {
+                sessionStorage.setItem("myData", data.user._id);
+                console.log("Data saved to sessionStorage");
+            }
+            goTo();
+        }else{
+            redText.style.display = 'flex';
+        }
+    }catch (error) {
+        console.error('Error:', error);
+    }
+};
+
 function regester(){
     const userNewImg = ('image/profile-default.svg');
     const userNewName = document.getElementById('newUserName').value;
@@ -216,7 +281,13 @@ function regester(){
         user_birth: userNewDate,
     };
     console.log(signUpData);
-    signUpUser(signUpData)
+    if (tag.includes('student')) {
+        signUpUser(signUpData)
+    }else if (tag.includes('manager')) {
+        signUpManager(signUpData)
+    }else{
+        window.location.href = 'Login.html';
+    }
 }
 
 function login(){
@@ -227,13 +298,15 @@ function login(){
         user_password: userPassword,
     };
     console.log(loginData);
-    loginUser(loginData)
+    if (tag.includes('student')) {
+        loginStudent(loginData);
+    }else if (tag.includes('manager')) {
+        loginManager(loginData);
+    }else if (tag.includes('admin')) {
+        loginAdmin(loginData)
+    }
 }
 
-function changeLogin() {
-    element1.style.display = 'none';
-    element2.style.display = 'contents';
-}
 
 function back() {
     element1.style.display = 'contents';
@@ -248,6 +321,8 @@ function logOut(){
 function clearData() {
     localStorage.removeItem("myData");
     sessionStorage.removeItem("myData");
+    localStorage.removeItem("tag");
+    sessionStorage.removeItem("tag");
 }
 
 function goTo() {
@@ -301,7 +376,6 @@ function loadActivitiesContent() {
 function unload() {
     dashboardContent.innerHTML = "<main></main>";
 }
-
 
 menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
