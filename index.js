@@ -18,6 +18,7 @@ const redTextRePassword = document.getElementById('re-password-error');
 const redTextDate = document.getElementById('birth-error');
 const redText = document.querySelector('.log-in .spef .cont .bottom-elements .wrong')
 const regDisplay = document.getElementById('reg');
+const beforElement = document.querySelector('.sidebar .side-menu li.active');
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -180,7 +181,7 @@ const loginStudent = async (loginData) => {
 
             if (document.getElementById("myCheckbox").checked) {
                 localStorage.setItem("myData", data.user._id);
-                localStorage.setItem("tag", sessionStorage.setItem("tag", tag));
+                localStorage.setItem("tag", tag);
                 console.log("Data saved to localStorage");
             } else {
                 sessionStorage.setItem("myData", data.user._id);
@@ -413,11 +414,20 @@ function loadActivitiesContent() {
             console.error('There was a problem fetching the dashboard content:', error);
         });
 }
-
+function showOverlay() {
+    const ov = document.getElementById('overlay');
+    ov.style.display = 'flex'
+}
+function hideOverlay() {
+    const ov = document.getElementById('overlay');
+    ov.style.display = 'none'
+}
 function unload() {
     dashboardContent.innerHTML = "<main></main>";
 }
-
+function nothing() {
+    return;
+}
 menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
 });
