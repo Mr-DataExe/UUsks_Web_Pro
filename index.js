@@ -52,23 +52,104 @@ function loadDashboardContent() {
             console.error('There was a problem fetching the dashboard content:', error);
         });
 }
-
 function loadClubsContent() {
-    fetch('clubs.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            dashboardContent.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('There was a problem fetching the dashboard content:', error);
-        });
+    if (userTag === 'student') {
+        fetch('clubs.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                dashboardContent.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the dashboard content:', error);
+            });
+            getAllClubs();
+    }else if (userTag === 'manager') {
+        fetch('clubs.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                dashboardContent.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the dashboard content:', error);
+            });
+    }else if (userTag === 'admin') {
+        fetch('AdminClubs.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                dashboardContent.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the dashboard content:', error);
+            });
+    }
 }
 
+function getAllClubs() {
+    if (userTag !== 'admin') {
+        fetch('https://clubs-system.onrender.com/api/club/')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(clubs => {
+                console.log(clubs);
+                displayClubs(clubs);
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the clubs:', error);
+            });
+    }
+}
+
+function displayClubs(clubs) {
+    clubs.forEach(club => {
+        console.log(clubs);
+        var className = 'item';
+        var imagePath = club.club_imag;
+        var textContent = club.club_name;
+        var parentElementId = 'cti';
+        var onclickFunction = `procClub('.item')`;
+
+        var div = document.createElement('div');
+        div.className = className;
+        div.setAttribute('onclick', onclickFunction);
+
+        var img = document.createElement('img');
+        img.src = imagePath;
+        div.appendChild(img);
+
+        var span = document.createElement('span');
+        span.textContent = textContent;
+        div.appendChild(span);
+
+        document.getElementById(parentElementId).appendChild(div);
+    });
+}
+
+function procClub(className) {
+    var clickedElement = document.querySelector(className);
+    console.log('Element clicked:', clickedElement);
+}
 const getUsers = async () => {
     try {
     const response = await fetch('https://clubs-system.onrender.com/api/user/');
@@ -88,7 +169,9 @@ const getUsers = async () => {
 function studentLogin() {
     element1.style.display = 'none';
     element2.style.display = 'contents';
-    regDisplay.style.display = 'flex'
+    regDisplay.style.display = 'flex';
+    document.getElementById("checkbox").style.display = 'flex';
+
     tag = 'student';
     sessionStorage.setItem("tag", tag);
 }
@@ -96,7 +179,8 @@ function studentLogin() {
 function managerLogin() {
     element1.style.display = 'none';
     element2.style.display = 'contents';
-    regDisplay.style.display = 'flex'
+    regDisplay.style.display = 'flex';
+    document.getElementById("checkbox").style.display = 'flex';
     tag = 'manager';
     sessionStorage.setItem("tag", tag);
 }
@@ -104,10 +188,29 @@ function managerLogin() {
 function adminLogin() {
     element1.style.display = 'none';
     element2.style.display = 'contents';
-    regDisplay.style.display = 'none'
+    regDisplay.style.display = 'none';
+    document.getElementById("checkbox").style.display = 'none';
     tag = 'admin';
     sessionStorage.setItem("tag", tag);
 }
+const createClub = async (clubData) => {
+    try {
+        const response = await fetch('https://clubs-system.onrender.com/api/club/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(clubData),
+        });
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            hideOverlay();
+        }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+};
 
 const signUpStudent = async (userData) => {
     try {
@@ -152,16 +255,20 @@ const signUpManager = async (userData) => {
 };
 
 function onLoadCheckLog() {
-    let localData = localStorage.getItem("myData");
-    let localTag = localStorage.getItem("tag");
-    let sessionData = sessionStorage.getItem("myData");
-    let sessionTag = sessionStorage.getItem("tag");
+    localData = localStorage.getItem("myData");
+    localTag = localStorage.getItem("tag");
+    sessionData = sessionStorage.getItem("myData");
+    sessionTag = sessionStorage.getItem("tag");
     if(localData !== null) {
         console.log(localData)
         console.log(localTag)
+        userID = localData;
+        userTag = localTag;
     }else if(sessionData !== null) {
         console.log(sessionData)
         console.log(sessionTag)
+        userID = sessionData;
+        userTag = sessionTag;
     }else if (localData == null || sessionData == null) {
         window.location.href = 'Login.html';
     }
@@ -234,6 +341,28 @@ const loginManager = async (loginData) => {
     }
 };
 
+const createEvent = async (eventData) => {
+    try {
+        const response = await fetch('https://clubs-system.onrender.com/api/admin/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(eventData),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.error('Error:', response.statusText);
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
 function regester(){
     const userNewImg = ('image/profile-default.svg');
     const userNewName = document.getElementById('newUserName').value;
@@ -258,6 +387,7 @@ function regester(){
         newUser.style.borderColor = '#25252c';
         userCheck = true;
     }
+
     if (!userNewEmail.includes('@st.uskudar.edu.tr' || '@uskudar.edu.tr') || userNewEmail.length < 20) {
         newEmail.style.borderColor = '#ff000090';
         redTextEmail.style.display = 'flex'
@@ -290,9 +420,11 @@ function regester(){
         newDate.style.borderColor = '#25252c';
         dateCheck = true;
     }
+
     if (userCheck == false || emailCheck == false || passwordCheck == false || rePasswordCheck == false || dateCheck == false) {
         return;
     }
+
     if (tag.includes('student')) {
         const signUpData = {
             user_img: userNewImg,
@@ -326,7 +458,41 @@ function regester(){
             window.location.href = 'Login.html';
         }
     }
+}
 
+function eventCreation() {
+    const eventNewImg = document.getElementById('image').value;
+    const eventNewName = document.getElementById('tittle').value;
+    const eventNewEmail = document.getElementById('description').value;
+    const eventNewLocation = document.getElementById('event-location').value;
+    const eventNewDate = document.getElementById('event-date').value;
+    const eventNewTime = document.getElementById('event-start').value + '-' + document.getElementById('event-end').value;
+    
+    const eventData = {
+        event_img: eventNewImg,
+        event_title: eventNewName,
+        event_description: eventNewEmail,
+        event_location: eventNewLocation,
+        event_club: 'Event Club',
+        event_date: eventNewDate,
+        event_time: eventNewTime,
+    }
+}
+
+function clubCreation() {
+    const clubNewImg = document.getElementById('image').value;
+    const clubNewName = document.getElementById('tittle').value;
+    const clubNewdescription = document.getElementById('description').value;
+    const clubNewOwner = document.getElementById('event-location').value;
+
+    
+    const eventData = {
+        club_img: clubNewImg,
+        club_name: clubNewName,
+        club_description: clubNewdescription,
+        club_owner: clubNewOwner,
+    }
+    createClub(eventData);
 }
 
 function login(){
@@ -345,11 +511,21 @@ function login(){
         };
         loginManager(loginData);
     }else if (tag.includes('admin')) {
+        const loginData = {
+            superAdmin_email: userEmail,
+            superAdmin_password: userPassword,
+        }
         loginAdmin(loginData)
     }
 }
 
-
+function loginAdmin(loginData) {
+    if (loginData.superAdmin_email == 'Admin' && loginData.superAdmin_password == 'Admin.exe') {
+        let data = 'Admin';
+        sessionStorage.setItem("myData", data);
+        goTo();
+    }
+}
 function back() {
     element1.style.display = 'contents';
     element2.style.display = 'none';
@@ -400,19 +576,39 @@ function procClub(items) {
 }
 
 function loadActivitiesContent() {
-    fetch('activities.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(data => {
-            dashboardContent.innerHTML = data;
-        })
-        .catch(error => {
-            console.error('There was a problem fetching the dashboard content:', error);
-        });
+    if (userTag === 'student') {
+        fetch('activities.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                dashboardContent.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the dashboard content:', error);
+            });
+    }else if (userTag === 'manager') {
+        fetch('activities.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+
+                dashboardContent.innerHTML = data;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching the dashboard content:', error);
+            });
+    }else if (userTag === 'admin') {
+        
+    }
 }
 function showOverlay() {
     const ov = document.getElementById('overlay');

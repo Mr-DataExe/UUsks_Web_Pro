@@ -19,8 +19,6 @@
             <div class = 'item item-8' onclick="procClub('.item-8')"><img src="images/yapay-zeka-kulubu 1.png"><span>ARTIFICIAL INTELLIGENCE CLUB</span></div>
             <div class = 'item item-9' onclick="procClub('.item-9')"><img src="images/yapay-zeka-kulubu 1.png"><span>ARTIFICIAL INTELLIGENCE CLUB</span></div>
             <div class = 'item item-10' onclick="procClub('.item-10')"><img src="images/yapay-zeka-kulubu 1.png"><span>ARTIFICIAL INTELLIGENCE CLUB</span></div>
-            <div class = 'item item-11' onclick="procClub('.item-11')"><img src="images/yapay-zeka-kulubu 1.png"><span>ARTIFICIAL INTELLIGENCE CLUB</span></div>
-            <div class = 'item item-12' onclick="procClub('.item-12')"><img src="images/yapay-zeka-kulubu 1.png"><span>ARTIFICIAL INTELLIGENCE CLUB</span></div>
         </div>
         <div class="inside-container" id="inClubs">
             <div class="rowDiv">
@@ -52,7 +50,47 @@
                         <div class="content">
                             <a onclick="hideOverlay()" class="back">Back</a>
                             <h2>Create an Event</h2>
-                            <p>This is some overlay content.</p>
+                            <div class="input-cont">
+                                <p>Tittle</p>
+                                <label for=""></label>
+                                <input type="tittle" id="tittle" placeholder="Name of the Event">
+                            </div>
+                            <div class="input-cont">
+                                <p>Description</p>
+                                <label for=""></label>
+                                <input type="description" id="description" placeholder="Details About Event">
+                            </div>
+                            <div class="input-cont">
+                                <div class="date">
+                                    <div class="input-cont">
+                                        <p>Date</p>
+                                        <label for=""></label>
+                                        <input type="date" id="event-date">
+                                    </div>
+                                    <div class="time">
+                                        <div class="input-cont">
+                                            <label for=""></label>
+                                            <input type="time" id="event-start">
+                                        </div>
+                                        <div class="input-cont">
+                                            <label for=""></label>
+                                            <input type="time" id="event-end">
+                                        </div>
+                                    </div>
+                                    <div class="input-cont">
+                                        <p>Place</p>
+                                        <label for=""></label>
+                                        <input type="location" id="event-location" placeholder="Place of the Event">
+                                    </div>
+                                    <div class="input-cont">
+                                        <p>Picture</p>
+                                        <label for="image"></label>
+                                        <input type="file" id="image" accept=".png, .jpg, .jpeg .svg" >
+                                    </div>
+                                    <p class="button">Create</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                     </div>

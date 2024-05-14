@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<main>
+    <div class="header">
+        <div class="left">
+            <h1>Clubs</h1>
+        </div>
+    </div>
+    <body>
+        <div class="inside-admin-clubs" id="inClubs">
+            <div class="rowDiv">
+                <div class="buttons">
+                    <p class="create" onclick="showOverlay()">Create club</p>
+                </div>
+                    <div class="overlay" id="overlay">
+                        <div class="content">
+                            <a onclick="hideOverlay()" class="back">Back</a>
+                            <h2>Create an Event</h2>
+                            <div class="input-cont">
+                                <p>Tittle</p>
+                                <label for=""></label>
+                                <input type="tittle" id="tittle" placeholder="Name of the Club">
+                            </div>
+                            <div class="input-cont">
+                                <p>Description</p>
+                                <label for=""></label>
+                                <input type="description" id="description" placeholder="Details About the Club">
+                            </div>
+                            <div class="input-cont">
+                                <div class="date">
+                                    <div class="input-cont">
+                                        <p>Email</p>
+                                        <label for=""></label>
+                                        <input type="location" id="event-location" placeholder="Club Owner ">
+                                    </div>
+                                    <div class="input-cont">
+                                        <p>Picture</p>
+                                        <label for="image"></label>
+                                        <input type="file" id="image" accept=".png, .jpg, .jpeg .svg" >
+                                    </div>
+                                    <p class="button" onclick="clubCreation()">Create</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</main>
