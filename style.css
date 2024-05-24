@@ -227,7 +227,7 @@ body{
     display: flex;
 }
 .log-in .spef .cont .bottom-elements p a{
-    color: #047857;
+    color: rgb(218, 7, 7);
 }
 
 .sign-up .bx.bxs-chevron-left {
